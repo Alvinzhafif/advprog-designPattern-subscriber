@@ -19,9 +19,6 @@ impl NotificationService{
             .join().unwrap();
     }
 
-
-
-
     #[tokio::main]
     async fn subscribe_request(product_type: String) -> Result<SubscriberRequest> {
         let product_type_upper: String = product_type.to_uppercase();
