@@ -1,4 +1,3 @@
-use rocket::futures::future::err;
 use rocket::serde::json::Json;
 
 use bambangshop_receiver::Result;
@@ -13,7 +12,7 @@ pub fn subscribe(product_type: &str) -> Result<Json<SubscriberRequest>> {
         Err(e) => Err(e),
     };
 }
-#[get("/unsubscribe/<product_type")]
+#[get("/unsubscribe/<product_type>")]
 pub fn unsubscribe(product_type: &str) -> Result<Json<SubscriberRequest>> {
     return match NotificationService::unsubscribe(product_type) {
         Ok(f) => Ok(Json::from(f)),

@@ -96,3 +96,20 @@ This is the place for you to write reflections:
 
     This is caused because of Rust's ownership system applies stringent restrictions at build time to maintain memory safety and prevent data races. Additionally, Rust facilitates the creation of concurrent and parallel programs by offering synchronization utilities such as `std::sync`. It may be challenging to reason about the behavior of the program if modified access to static variables is permitted from many threads without appropriate synchronization. This could lead to data races.
 #### Reflection Subscriber-2
+
+1. #### Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+    <br>
+    
+    I have read some bits of `lib.rs`, when I was reading through the templates. I haven't grasped the full function of it, however from my short understanding the function of this file is for setting up the base infrastructure of a Rust web app. First the `lazy_static!` is a macro that allows each variable initialized through it would only be initialized the first time and the rest of its uses would reuse that existing value. The macro also implements the use of `REQWEST_CLIENT` which is a http client library from Rust, typically for making http requests to external services. And the rest of the code and method is for setting up the apps root url and rocket applications using `rocket::figment`.
+2. #### Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+    <br>
+
+    having an Observer Pattern eases the plugin of more subscribers through it's Decoupling, scalability, and Dynamic Registration capabilities. The Observer pattern will decouple the publisher from the subscribers, making it independent so that the subscribers can receive notifications without affecting other subscribers. Adding more subscribers also would not be a problem, as long as the subscriber implements the observer pattern interface. 
+    <br>
+    <br>
+    If there are more than one instance of the main app, then it may be a bit difficult. As to achieve it we need to add significant changes so each main instance is configured independently for avoiding race condition. Additionally, if it were needed to share data between subscribers then a centralized configuration system may be necessary.
+3. #### Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+    <br>
+    
+    I have tried implementing a few test of my group project, mainly since the group project has only covered more or less 25%, I implemented a few test to some of the existing function that has been made by me and my group members. The tests itself is beneficial to ensure each method is used, however not every part of the code is covered due to some error in the test generation. I would fix or make more tests soon and make sure each part of the code whether it is the service, model, or controller is covered.
+   

@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter, Result, write};
+use std::fmt::{Display, Formatter, Result};
 
 use rocket::serde::{Deserialize, Serialize};
 
